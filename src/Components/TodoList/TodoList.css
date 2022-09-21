@@ -1,0 +1,35 @@
+
+.todo_list
+{
+    width: auto;
+    height: 50px;
+    overflow: hidden;
+    background-color: #b59a9a;
+    border-radius: 6px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+#del_div
+{
+    display: flex;
+    flex-direction: row;
+    width: auto;
+}
+
+h6
+{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(16, 15, 15);
+    margin: 0 auto;
+
+}
+
