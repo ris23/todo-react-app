@@ -1,4 +1,4 @@
-import { FormControlLabel } from "@mui/material";
+
 import React , {useState}from "react";
 import "../../Components/TodoList/TodoList.css";
 import {Modal} from "react-bootstrap";
@@ -17,7 +17,7 @@ function TodoList({id, todo, completed, onDeleteTask, updateTask}) {
 
     function showDetails()
     {
-        setShow(true);
+        Modal ? setShow(true) : setShow(false);
     }
 
     function deletePressed(data)
@@ -34,22 +34,23 @@ function TodoList({id, todo, completed, onDeleteTask, updateTask}) {
 
     }
 
+    function trueStatus(id,completed)
+    {
+        completed = false;
+        updateTaskClick(id, completed);
+    }
+
+    function falseStatus(id,completed)
+    {
+        completed = true;
+        updateTaskClick(id, completed);
+    }
+
     function completedTask(id,completed)
     {
         setLine(true);
-        if (completed === "true")
-        {
-            completed = false;
-            updateTaskClick(id,completed);
-        }
-        else
-        {
-            completed = true;
-            updateTaskClick(id,completed);
-        }
-        console.log("status: ", completed);   
+        completed ?  trueStatus(id,completed) : falseStatus(id,completed) 
     }
-
 
     function DeleteTask (id) 
     {    
@@ -62,7 +63,6 @@ function TodoList({id, todo, completed, onDeleteTask, updateTask}) {
 
     function updateTaskClick(id,completed)
     {
-
         fetch(`https://dummyjson.com/todos/${id}`, {
         method: 'PUT', 
         headers: { 'Content-Type': 'application/json' },
@@ -74,18 +74,8 @@ function TodoList({id, todo, completed, onDeleteTask, updateTask}) {
         .then(console.log);
     }
 
-    function changeCheckBox(completed)
-    {
-        if(completed == "true")
-        {
-            console.log("check 1:",completed);
-            setCheck(true);
-        }
-        else
-        {
-            console.log("check 2:",completed);
-            setCheck(false);
-        }
+    function changeCheckBox(completed) {
+        completed ? setCheck(true) : setCheck(false);
     }
 
     return(
