@@ -25,13 +25,8 @@ function TodoList({id, todo, completed, onDeleteTask, updateTask}) {
         if(data)
         {
             DeleteTask(data);
-            onDeleteTask(data);
         }
-        else
-        {
-            onDeleteTask(data);
-        }
-
+        onDeleteTask(data);
     }
 
     function trueStatus(id,completed)
@@ -75,7 +70,7 @@ function TodoList({id, todo, completed, onDeleteTask, updateTask}) {
     }
 
     function changeCheckBox(completed) {
-        completed ? setCheck(true) : setCheck(false);
+       setCheck(completed);
     }
 
     return(
@@ -92,8 +87,6 @@ function TodoList({id, todo, completed, onDeleteTask, updateTask}) {
                     <DeleteIcon />
                     </IconButton>
                 </div>
-                
-                
             </div>
            
             <Modal show={show}>
